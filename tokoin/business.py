@@ -75,7 +75,7 @@ def check_option_type_input():
     print ('============================================================')
     is_valid = False
     while not is_valid:
-        option_type = input('Input option:')
+        option_type = input('Input option:\n')
         check_exit_input(option_type)
         if option_type in ['1', '2', 'quit']:
             is_valid = True
