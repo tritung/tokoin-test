@@ -39,7 +39,7 @@ class BaseProcessor(object):
     
     def do_format_search_value(self, d_type, field_value):
         try:
-            if d_type in ['int64']:
+            if d_type in ['int64', 'int32']:
                 field_value = int(field_value)
             elif d_type in ['float64']:
                 field_value = float(field_value)
