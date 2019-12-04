@@ -10,12 +10,12 @@ from tokoin.searchitem.organization import OrganizationProcessor
 class SearchFactory(object):
     @staticmethod
     def get_search_processor(search_type):
-        if int(search_type) in SearchFactory.dict_processor:
-            return SearchFactory.dict_processor.get(int(search_type))
+        if search_type in SearchFactory.dict_processor:
+            return SearchFactory.dict_processor.get(search_type)
         return None
     
     dict_processor = {
-        1: UserProcessor(),
-        2: TicketProcessor(),
-        3: OrganizationProcessor()
+        '1': UserProcessor(),
+        '2': TicketProcessor(),
+        '3': OrganizationProcessor()
     }

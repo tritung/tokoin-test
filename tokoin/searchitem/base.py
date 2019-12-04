@@ -7,6 +7,8 @@ from tokoin.data_loader import DataLoader
 
 
 class BaseProcessor(object):
+    name = ''
+    
     def __init__(self, *args, **kwargs):
         data_tables = DataLoader.get_instance()
         self.df_user = data_tables.users_table
@@ -17,13 +19,11 @@ class BaseProcessor(object):
     def do_loads_data(self):
         pass
     
-    def get_all_search_field(self):
-        return []
-    
-    def get_search_field(self, field_name):
-        return None
+    def check_search_field(self, field_name):
+        return False
     
     def search(self, field_name, field_value):
+        print ('Searching %s for %s with a value %s  ...........' % (self.name, field_name, field_value))
         result = self.do_search(field_name, field_value)
         return self.do_format_data(result)
     
@@ -35,6 +35,7 @@ class BaseProcessor(object):
     
     def print_result(self, result):
         if len(result) > 0:
+            print ('Results: %s objects founds \n' % len(result))
             for item in result:
                 for key, val in item.items():
                     print ('%s : \t %s' % (key, val))
