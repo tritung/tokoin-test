@@ -30,6 +30,11 @@ class TestUsers(TestCase):
         self.processor.print_result(res)
         self.assertEqual(len(res), 1)
         
+    def test_search_tags(self):
+        res = self.processor.search('tags', 'Foxworth')
+        self.processor.print_result(res)
+        self.assertEqual(len(res), 1)
+        
     def test_search_bool(self):
         res = self.processor.search('verified', 'true')
         self.processor.print_result(res)

@@ -38,7 +38,7 @@ class UserProcessor(BaseProcessor):
             field_name = field_name + '_' + self.name
             d_type = self.df_user_org_ticket_submitter[field_name].dtype.name
             field_value = self.do_format_search_value(d_type, field_value)
-            if field_name not in ['tags']:
+            if field_name not in ['tags_users']:
                 res1 = self.df_user_org_ticket_submitter[self.df_user_org_ticket_submitter[field_name] == field_value]
                 res2 = self.df_user_org_ticket_assignee[self.df_user_org_ticket_assignee[field_name] == field_value]
             else:

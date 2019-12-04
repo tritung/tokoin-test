@@ -40,7 +40,7 @@ class OrganizationProcessor(BaseProcessor):
             d_type = self.df_org_user[field_name].dtype.name
             field_value = self.do_format_search_value(d_type, field_value)
             
-            if field_name not in ['domain_names', 'tags']:
+            if field_name not in ['domain_names_organizations', 'tags_organizations']:
                 res1 = self.df_org_user[self.df_org_user[field_name] == field_value]
                 res2 = self.df_org_ticket[self.df_org_ticket[field_name] == field_value]
             else:
