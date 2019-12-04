@@ -42,7 +42,7 @@ def check_search_input():
     search_res = search_processor.search(search_field, search_value)
     search_processor.print_result(search_res)
 
-    print ('\n\n=============================================\n\n')
+    print ('\n\n=============================================')
     check_option_type_input()
     
     
@@ -65,11 +65,11 @@ def show_list_searchable():
     check_option_type_input()
 
 def check_option_type_input():
-    print ("Type 'quit' to exit any time, Press 'Enter' to countinue\n\n")
-    print ("\tSelect search options:\n")
-    print ("\tPress 1 to search\n")
-    print ("\tPress 2 to view a list of searchable fields\n")
-    print ("\tType 'quit' to exit\n")
+    print ("Type 'quit' to exit any time, Press 'Enter' to countinue\n")
+    print ("\tSelect search options:")
+    print ("\t * Press 1 to search")
+    print ("\t * Press 2 to view a list of searchable fields")
+    print ("\t * Type 'quit' to exit\n")
     is_valid = False
     while not is_valid:
         option_type = input()

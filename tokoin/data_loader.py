@@ -25,6 +25,7 @@ class DataLoader:
         else:
             try:
                 self.users_table = self.get_dataframte('users')
+                self.users_table['verified_users'] = self.users_table['verified_users'].astype('bool')
                 self.organizations_table = self.get_dataframte('organizations')
                 self.tickets_table = self.get_dataframte('tickets')
                 DataLoader.__instance = self

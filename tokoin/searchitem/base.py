@@ -3,8 +3,12 @@ Created on Dec 3, 2019
 
 @author: TUNGTRUONG
 '''
+import logging
+
 from tokoin.data_loader import DataLoader
 
+
+logger = logging.getLogger(__name__)
 
 class BaseProcessor(object):
     name = ''
@@ -32,6 +36,19 @@ class BaseProcessor(object):
     
     def do_format_data(self, result):
         return None
+    
+    def do_format_search_value(self, d_type, field_value):
+        try:
+            if d_type in ['int64']:
+                field_value = int(field_value)
+            elif d_type in ['float64']:
+                field_value = float(field_value)
+            elif d_type in ['bool']:
+                field_value = True if field_value.lower() == 'true' else False if field_value.lower() == 'false' else field_value
+        except Exception as ex:
+            logger.exception(ex)
+            
+        return field_value
     
     def print_result(self, result):
         if len(result) > 0:

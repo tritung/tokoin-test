@@ -27,11 +27,19 @@ class OrganizationProcessor(BaseProcessor):
         self.df_org_ticket = pd.merge(self.df_organizations, self.df_tickets, left_on='_id_organizations', 
                                       right_on='organization_id_tickets', how='left')
 
-        
+    
+    def check_search_field(self, field_name):
+        if field_name in ORFANIZATION_FIELD:
+            return True
+        return False
+    
     def do_search(self, field_name, field_value):
         data = {}
         try:
             field_name = field_name + '_' + self.name
+            d_type = self.df_org_user[field_name].dtype.name
+            field_value = self.do_format_search_value(d_type, field_value)
+            
             res1 = self.df_org_user[self.df_org_user[field_name] == field_value]
             res2 = self.df_org_ticket[self.df_org_ticket[field_name] == field_value]
             self.filter_data(data, res1, 'users')

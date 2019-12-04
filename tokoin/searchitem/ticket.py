@@ -27,11 +27,19 @@ class TicketProcessor(BaseProcessor):
                                       right_on='_id_users', how='left')
         self.df_ticket_assignee = pd.merge(df_ticket_org, self.df_user, left_on='assignee_id_tickets', 
                                       right_on='_id_users', how='left')
-        
+    
+    def check_search_field(self, field_name):
+        if field_name in TICKET_FIELD:
+            return True
+        return False
+    
     def do_search(self, field_name, field_value):
         data = {}
         try:
             field_name = field_name + '_' + self.name
+            d_type = self.df_ticket_submitter[field_name].dtype.name
+            field_value = self.do_format_search_value(d_type, field_value)
+            
             res1 = self.df_ticket_submitter[self.df_ticket_submitter[field_name] == field_value]
             res2 = self.df_ticket_assignee[self.df_ticket_assignee[field_name] == field_value]
             self.filter_data(data, res1, 'submitter')
