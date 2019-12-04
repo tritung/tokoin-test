@@ -21,12 +21,12 @@ class TicketUsers(TestCase):
         self.assertEqual(res, False)
         
     def test_search_int(self):
-        res = self.processor.search('submitter_id', 38)
+        res = self.processor.search('assignee_id', 24)
         self.processor.print_result(res)
-        self.assertEqual(len(res), 3)
+        self.assertEqual(len(res), 4)
     
     def test_search_string(self):
-        res = self.processor.search('_id', '436bf9b0-1147-4c0a-8439-6f79833bff5b')
+        res = self.processor.search('description', '')
         self.processor.print_result(res)
         self.assertEqual(len(res), 1)
         
