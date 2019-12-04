@@ -40,8 +40,12 @@ class TicketProcessor(BaseProcessor):
             d_type = self.df_ticket_submitter[field_name].dtype.name
             field_value = self.do_format_search_value(d_type, field_value)
             
-            res1 = self.df_ticket_submitter[self.df_ticket_submitter[field_name] == field_value]
-            res2 = self.df_ticket_assignee[self.df_ticket_assignee[field_name] == field_value]
+            if field_name not in ['tags']:
+                res1 = self.df_ticket_submitter[self.df_ticket_submitter[field_name] == field_value]
+                res2 = self.df_ticket_assignee[self.df_ticket_assignee[field_name] == field_value]
+            else:
+                res1 = self.df_ticket_submitter[self.df_ticket_submitter[field_name].astype(str).str.contains(field_value)]
+                res2 = self.df_ticket_assignee[self.df_ticket_assignee[field_name].astype(str).str.contains(field_value)]
             self.filter_data(data, res1, 'submitter')
             self.filter_data(data, res2, 'assignee')
         except Exception as ex:
