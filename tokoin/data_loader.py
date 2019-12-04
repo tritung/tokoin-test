@@ -4,8 +4,13 @@ Created on Dec 3, 2019
 @author: TUNGTRUONG
 '''
 
+import logging
 import os
+
 import pandas as pd
+
+
+logger = logging.getLogger(__name__)
 
 class DataLoader:
     __instance = None
@@ -30,7 +35,8 @@ class DataLoader:
                 self.tickets_table = self.get_dataframte('tickets')
                 DataLoader.__instance = self
             except Exception as ex:
-                raise ex
+                logger.exception(ex)
+                raise Exception('Can not loads resource data.')
             
     def get_dataframte(self, item_name):
         path_file = os.path.abspath('resources/%s.json' % item_name)

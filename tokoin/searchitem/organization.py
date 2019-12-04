@@ -97,3 +97,4 @@ class OrganizationProcessor(BaseProcessor):
             logger.exception(ex)
         return list_result
     
+    

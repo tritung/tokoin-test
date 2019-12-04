@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 numpy = "*"
 pandas = "*"
+mock = "*"
 
 [requires]
 python_version = "3.6"
