@@ -25,7 +25,7 @@ def check_search_input():
         if search_type in ['1', '2', '3']:
             is_valid = True
         else:
-            print ('Invalid select. Please input again\n')
+            print ('Invalid input value. Please input again\n')
             
     search_processor = SearchFactory.get_search_processor(search_type)
     
@@ -36,7 +36,7 @@ def check_search_input():
         if search_processor.check_search_field(search_field):
             is_valid = True
         else:
-            print ('Invalid select. Please input again\n')
+            print ('Invalid input value. Please input again\n')
     
     search_value = input("Enter search value:\n")
     
@@ -80,7 +80,7 @@ def check_option_type_input():
         if option_type in ['1', '2', 'quit']:
             is_valid = True
         else:
-            print ('Invalid select. Please input again\n')
+            print ('Invalid input value. Please input again\n')
     
     if option_type == '1':
         check_search_input()
