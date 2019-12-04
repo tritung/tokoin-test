@@ -49,17 +49,17 @@ def check_search_input():
 def show_list_searchable():
     print ('Search Users with:\n')
     for item in USER_FIELD:
-        print (item + '\n')
+        print (item)
     
-    print ('----------------------------------------\n\n')
+    print ('----------------------------------------\n')
     print ('Search Tickets with:\n')
     for item in TICKET_FIELD:
-        print (item + '\n')
+        print (item)
         
     print ('----------------------------------------\n\n')
     print ('Search Organizations with:\n')
     for item in ORFANIZATION_FIELD:
-        print (item + '\n')
+        print (item)
     
     print ('\n\n============================================================')
     check_option_type_input()
