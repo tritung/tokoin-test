@@ -21,7 +21,7 @@ class TestUsers(TestCase):
         self.assertEqual(res, False)
         
     def test_search_int(self):
-        res = self.processor.search('_id', 101)
+        res = self.processor.search('_id', '101')
         self.processor.print_result(res)
         self.assertEqual(len(res), 1)
     
@@ -31,8 +31,8 @@ class TestUsers(TestCase):
         self.assertEqual(len(res), 1)
         
     def test_search_bool(self):
-        res = self.processor.search('details', 'MegaCorp')
+        res = self.processor.search('shared_tickets', 'false')
         self.processor.print_result(res)
-        self.assertEqual(len(res), 9)
+        self.assertEqual(len(res), 15)
         
         
