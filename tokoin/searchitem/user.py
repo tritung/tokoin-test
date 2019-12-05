@@ -75,6 +75,7 @@ class UserProcessor(BaseProcessor):
                 for item in USER_FIELD:
                     r[item] = val.get(item +'_' + self.name, None)
                 
+                r['organization_id'] = self.try_parse_int(r['organization_id'])
                 r['organization_name'] = val.get('name_organizations', None)    
                 list_ticket = val.get('list_ticket', [])
                 for i in range(len(list_ticket)):

@@ -60,4 +60,11 @@ class BaseProcessor(object):
         else:
             print ('No results found')
     
-    
+    def try_parse_int(self, s, base=10, val=None):
+        try:
+            if type(s) is float:
+                return round(s)
+            return int(s)
+        except Exception as ex:
+            logger.exception(ex)
+            return s

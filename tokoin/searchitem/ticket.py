@@ -76,7 +76,9 @@ class TicketProcessor(BaseProcessor):
                 r = {}
                 for item in TICKET_FIELD:
                     r[item] = val.get(item +'_' + self.name, None)
-                    
+                
+                r['organization_id'] = self.try_parse_int(r['organization_id'])
+                r['assignee_id'] = self.try_parse_int(r['assignee_id'])
                 r['submitter_name'] = val.get('submitter_name', None)
                 r['assignee_name'] = val.get('assignee_name', None)
                 r['organization_name'] = val.get('name_organizations', None)
